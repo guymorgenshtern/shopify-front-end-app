@@ -1,0 +1,24 @@
+.response-list {
+    display: block;
+    min-width: 40vw;
+
+    .ghost-text {
+        font-weight: lighter;
+        color: #818aa3;
+    }
+
+    h2 {
+        font-family: Inter, sans-serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+
+    div {
+        padding: 2px 5px;
+    }
+
+    .poem-prompt {
+        font-weight: bold;
+    }
+}
+
