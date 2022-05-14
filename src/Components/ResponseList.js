@@ -1,8 +1,8 @@
 import CentreWrapper from "./CentreWrapper";
 import Card from "./Card";
-import "../Styles/PoemList.scss";
+import "../Styles/ResponseList.scss";
 
-const PoemList = (props) => {
+const ResponseList = (props) => {
   return (
     <CentreWrapper>
       <div className="response-list">
@@ -13,11 +13,14 @@ const PoemList = (props) => {
           props.promptList?.map((prompt) => {
             return (
               <Card
-                header={"TODO"}
                 body={
                   <>
-                    <div className="poem-prompt">{prompt?.userInput}</div>
-                    <div className="poem-content">{prompt.openAIResponse}</div>
+                    <div className="response-prompt">
+                      {prompt?.userInput}
+                    </div>
+                    <div className="response-content">
+                      {prompt?.openAIResponse}
+                    </div>
                   </>
                 }
                 key={prompt?.userInput + prompt?.openAIResponse}
@@ -30,4 +33,4 @@ const PoemList = (props) => {
   );
 };
 
-export default PoemList;
+export default ResponseList;

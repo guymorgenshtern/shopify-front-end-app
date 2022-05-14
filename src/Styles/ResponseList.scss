@@ -1,6 +1,7 @@
 .response-list {
     display: block;
     min-width: 40vw;
+    white-space: pre-wrap;
 
     .ghost-text {
         font-weight: lighter;
@@ -17,7 +18,12 @@
         padding: 2px 5px;
     }
 
-    .poem-prompt {
+    pre {
+        font-family: Inter, sans-serif;
+
+    }
+
+    .response-prompt {
         font-weight: bold;
     }
 }

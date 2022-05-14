@@ -1,6 +1,19 @@
 .card {
     width: 40vw;
-    border: 2px solid #818aa3;
+    border: 2px solid #080705;
     margin-bottom: 1rem;
     word-wrap: break-word;
+    transition: all 0.3s;
+
+    
+    &:hover {
+        width: 42vw;
+        box-shadow: 2px 2px 2px 2px rgb(8, 7, 5, 0.1);
+        border: 2px solid #6d758a;
+        font-size: 1.02rem;
+    }
+
+    .card-body {
+        margin-bottom: 1rem;
+    }
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import PoemList from "./PoemList";
+import ResponseList from "./ResponseList";
 import PromptSection from "./PromptSection";
 
 const Home = () => {
@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <>
       <PromptSection savePoems={savePoems}></PromptSection>
-      <PoemList promptList={promptList || []}></PoemList>
+      <ResponseList promptList={promptList || []}></ResponseList>
     </>
   );
 };

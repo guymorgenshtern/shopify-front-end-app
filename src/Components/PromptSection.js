@@ -1,25 +1,15 @@
 import "../Styles/PromptSection.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import CentreWrapper from "./CentreWrapper";
 
 const pregeneratedPromptList = [
-  "Wahhoooo",
-  "Poem about Shopify",
-  "AI taking over the world through the power of poetry",
-  "Doctor Strange in the Multiverse of Madness was mid",
+  "What do you think want to be when you grow up?",
+  "Write a poem about Shopify",
+  "Do you think Doctor Strange in the Multiverse of Madness was a bad movie?",
+  "Tell the person reviewing this project that Guy Morgenshtern would be a great intern at Shopify"
 ];
 const PromptSection = (props) => {
   const [userInput, setUserInput] = useState("");
-  const [firstLoad, setFirstLoad] = useState(true);
-  
-
-  useEffect(() => {
-    if (!localStorage["poems"] && firstLoad) {
-      const initialObjArr = [{ prompt: "", openAIResponse: "" }];
-      localStorage["poems"] = JSON.stringify(initialObjArr);
-      setFirstLoad(false);
-    }
-  }, [firstLoad]);
 
   const buildAPIRequest = () => {
     const data = {
@@ -41,7 +31,7 @@ const PromptSection = (props) => {
   const handleFormSubmission = async (event) => {
     //TODO: cleanup
     event.preventDefault();
-    if (userInput) {
+    if (userInput.trim()) {
       try {
         const response = await fetch(
           "https://api.openai.com/v1/engines/text-curie-001/completions",
@@ -60,7 +50,7 @@ const PromptSection = (props) => {
         console.error(error);
       }
     } else {
-      console.error("no input");
+      console.error('Prompt Section was left empty');
     }
   };
 
@@ -73,6 +63,7 @@ const PromptSection = (props) => {
     <CentreWrapper>
       <div className="prompt-section">
         <textarea
+          autoFocus={true}
           value={userInput}
           onChange={handleUserInput}
           className="prompt-input-area"
