@@ -6,8 +6,10 @@ const pregeneratedPromptList = [
   "What do you think want to be when you grow up?",
   "Write a poem about Shopify",
   "Do you think Doctor Strange in the Multiverse of Madness was a bad movie?",
-  "Tell the person reviewing this project that Guy Morgenshtern would be a great intern at Shopify"
+  "Tell the person reviewing this project that Guy Morgenshtern would be a great intern at Shopify",
+  "Tell me a joke",
 ];
+
 const PromptSection = (props) => {
   const [userInput, setUserInput] = useState("");
 
@@ -46,11 +48,12 @@ const PromptSection = (props) => {
         );
         const poem = await response.json();
         props.savePoems(userInput, poem.choices[0].text);
+        setUserInput("");
       } catch (error) {
         console.error(error);
       }
     } else {
-      console.error('Prompt Section was left empty');
+      console.error("Prompt Section was left empty");
     }
   };
 
@@ -68,7 +71,7 @@ const PromptSection = (props) => {
           onChange={handleUserInput}
           className="prompt-input-area"
           type={"text"}
-          placeholder={"a little prompt action..."}
+          placeholder={"Enter prompt..."}
         ></textarea>
 
         <div className="prompt-button-group">
