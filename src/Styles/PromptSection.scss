@@ -1,4 +1,5 @@
 .prompt-section {
+  z-index: 0;
   display: block;
   font-size: 1.2em;
   margin-bottom: 1rem;
@@ -20,6 +21,15 @@
     outline-style: none;
     box-shadow: 2px 2px 2px 2px rgb(8, 7, 5, 0.1);
     border: 2px solid #6d758a;
+  }
+
+  .help-button {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-family: Inter, sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
   }
 
   .prompt-button-group {

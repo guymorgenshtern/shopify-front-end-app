@@ -1,0 +1,32 @@
+.modal {
+  max-width: 90%;
+  width: 50vw;
+  z-index: 9999 !important;
+  font-family: Inter, sans-serif;
+  box-shadow: 2px 2px 2px 2px rgb(8, 7, 5, 0.1);
+  border: 2px solid #080705;
+  background: #ffffff;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    padding: 1rem;
+  }
+
+  button {
+    position: fixed;
+    right: 0;
+    background: none;
+    border: none;
+    text-decoration: underline;
+    font-family: Inter, sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+  }
+}

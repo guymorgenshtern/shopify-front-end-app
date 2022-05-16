@@ -3,11 +3,12 @@ import { useState } from "react";
 import CentreWrapper from "./CentreWrapper";
 
 const pregeneratedPromptList = [
-  "What do you think want to be when you grow up?",
+  "What do you want to be when you grow up?",
   "Write a poem about Shopify",
   "Do you think Doctor Strange in the Multiverse of Madness was a bad movie?",
   "Tell the person reviewing this project that Guy Morgenshtern would be a great intern at Shopify",
   "Tell me a joke",
+  "When is the next solar eclipse?",
 ];
 
 const PromptSection = (props) => {
@@ -63,31 +64,43 @@ const PromptSection = (props) => {
   };
 
   return (
-    <CentreWrapper>
-      <div className="prompt-section">
-        <textarea
-          autoFocus={true}
-          value={userInput}
-          onChange={handleUserInput}
-          className="prompt-input-area"
-          type={"text"}
-          placeholder={"Enter prompt..."}
-        ></textarea>
+    <>
+      <CentreWrapper>
+        <div className="prompt-section">
+          <textarea
+            autoFocus={true}
+            value={userInput}
+            onChange={handleUserInput}
+            className="prompt-input-area"
+            type={"text"}
+            placeholder={"Enter a prompt to query the OpenAI Model..."}
+          ></textarea>
 
-        <div className="prompt-button-group">
-          <button onClick={generatePrompt} className="generate-prompt" type="">
-            Generate Prompt
-          </button>
+          <div className="prompt-button-group">
+            <button
+              onClick={generatePrompt}
+              className="generate-prompt"
+              type=""
+            >
+              Generate Prompt
+            </button>
+            <button
+              onClick={handleFormSubmission}
+              className="submit"
+              type="submit"
+            >
+              Submit
+            </button>
+          </div>
           <button
-            onClick={handleFormSubmission}
-            className="submit"
-            type="submit"
+            className="help-button"
+            onClick={props.onHelp}
           >
-            Submit
+            What makes a good prompt?
           </button>
         </div>
-      </div>
-    </CentreWrapper>
+      </CentreWrapper>
+    </>
   );
 };
 
