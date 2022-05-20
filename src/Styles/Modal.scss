@@ -14,7 +14,8 @@
   max-height: 90vh;
   display: flex;
   flex-direction: column;
-
+  transition: all 0.3s;
+  
   .content {
     padding: 1rem;
   }

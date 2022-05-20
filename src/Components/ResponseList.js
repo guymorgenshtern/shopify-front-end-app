@@ -7,23 +7,23 @@ const ResponseList = (props) => {
     <CentreWrapper>
       <div className="response-list">
         <h2>Responses</h2>
-        {props.promptList.length === 0 ? (
+        {props.responseList.length === 0 ? (
           <p className="ghost-text">Submit a prompt above!</p>
         ) : (
-          props.promptList?.map((prompt) => {
+          props.responseList?.map((response) => {
             return (
               <Card
                 body={
                   <>
                     <div className="response-prompt">
-                      {prompt?.userInput}
+                      {response?.userInput}
                     </div>
                     <div className="response-content">
-                      {prompt?.openAIResponse}
+                      {response?.openAIResponse}
                     </div>
                   </>
                 }
-                key={prompt?.userInput + prompt?.openAIResponse}
+                key={response?.userInput + response?.openAIResponse}
               ></Card>
             );
           })

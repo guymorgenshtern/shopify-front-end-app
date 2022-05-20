@@ -5,22 +5,22 @@ import HelpModal from "./HelpModal";
 import "../Styles/Home.scss";
 
 const Home = () => {
-  const [promptList, setPromptList] = useState([]);
+  const [responseList, setResponseList] = useState([]);
   const [helpModalOpen, setHelpModalOpen] = useState(false);
 
   useEffect(() => {
-    const savedPrompts = JSON.parse(localStorage.getItem("prompts")) || [];
-    setPromptList(savedPrompts);
+    const savedPrompts = JSON.parse(localStorage.getItem("responses")) || [];
+    setResponseList(savedPrompts);
   }, []);
 
-  const savePoems = (userInput, poem) => {
-    const newPoems = [
-      { userInput: userInput, openAIResponse: poem },
-      ...promptList,
+  const saveResponses = (userInput, openAIResponse) => {
+    const newResponses = [
+      { userInput: userInput, openAIResponse: openAIResponse },
+      ...responseList,
     ];
 
-    setPromptList(newPoems);
-    localStorage.setItem("prompts", JSON.stringify(newPoems));
+    setResponseList(newResponses);
+    localStorage.setItem("responses", JSON.stringify(newResponses));
   };
 
   return (
@@ -31,10 +31,10 @@ const Home = () => {
       ></HelpModal>
       <div className={"page-body" + (helpModalOpen ? "-blur" : "")}>
         <PromptSection
-          savePoems={savePoems}
+          saveResponses={saveResponses}
           onHelp={() => setHelpModalOpen(true)}
         ></PromptSection>
-        <ResponseList promptList={promptList || []}></ResponseList>
+        <ResponseList responseList={responseList || []}></ResponseList>
       </div>
     </>
   );

@@ -27,14 +27,9 @@ const PromptSection = (props) => {
     return data;
   };
 
-  const handleUserInput = (event) => {
-    setUserInput(event.target.value);
-  };
-
-  const handleFormSubmission = async (event) => {
-    //TODO: cleanup
-    event.preventDefault();
-    if (userInput.trim()) {
+  const fetchData = async () => {
+    let data;
+    let error;
       try {
         const response = await fetch(
           "https://api.openai.com/v1/engines/text-curie-001/completions",
@@ -47,14 +42,31 @@ const PromptSection = (props) => {
             body: JSON.stringify(buildAPIRequest()),
           }
         );
-        const poem = await response.json();
-        props.savePoems(userInput, poem.choices[0].text);
-        setUserInput("");
-      } catch (error) {
-        console.error(error);
+        data = await response.json();
+      } catch (responseError) {
+        error = responseError;
       }
+
+      return { data, error }
+  }
+
+  const handleUserInput = (event) => {
+    setUserInput(event.target.value);
+  };
+
+  const handleFormSubmission = async (event) => {
+    event.preventDefault();
+    if (userInput.trim()) {
+      const response = await fetchData();
+
+      if (response.error) {
+        console.log(response.error)
+      } else {
+        response.data?.choices && props.saveResponses(userInput, response.data?.choices[0].text);
+      }
+      setUserInput("");
     } else {
-      console.error("Prompt Section was left empty");
+      console.error('Prompt field was left empty')
     }
   };
 
