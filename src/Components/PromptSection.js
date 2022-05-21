@@ -37,7 +37,7 @@ const PromptSection = (props) => {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer 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`,
+              Authorization: process.env.OPENAI_API_KEY,
             },
             body: JSON.stringify(buildAPIRequest()),
           }
